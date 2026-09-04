@@ -11,6 +11,16 @@ Pairs with the shared head firmware:
 
 **License: [MIT](LICENSE)** — Copyright © 2026 Dragan Bojovic.
 
+## Start here
+
+Do not install Flutter for a first try. Grab the APK from
+**[Releases](https://github.com/Draganito/splitgrade-controller-android/releases)**
+and follow **[INSTALL.md](INSTALL.md)** (copy onto the phone from Debian,
+sideload, connect to `DarkroomTimer`).
+
+Flash the head first:
+[FLASH.md](https://github.com/Draganito/darkroom-enlarger-head/blob/main/FLASH.md).
+
 ## What this is
 
 | | |
@@ -22,8 +32,8 @@ Pairs with the shared head firmware:
 
 This is the cheap half of the two-tier design: the same enlarger head also
 speaks ESP-NOW for a SenseCAP primary-tier controller with sensors
-(`splitgrade-controller-sensecap`, when published). The head firmware is
-shared; only the remote changes.
+([splitgrade-controller-sensecap](https://github.com/Draganito/splitgrade-controller-sensecap)).
+The head firmware is shared; only the remote changes.
 
 ## Beta scope
 
@@ -31,34 +41,17 @@ shared; only the remote changes.
 enlarger-head board.
 
 **Includes:** BLE scan/connect, focus / expose UI, hard & soft times,
-hidden LED config (pixel count + GPIO), wake-lock during exposure.
+hidden LED config (pixel count + GPIO), wake-lock during exposure, a
+sideload APK on GitHub Releases.
 
 **Not this repo:** ESP32 firmware, SenseCAP UI, panel Gerbers, Play Store
 release signing. Emulator BLE is unreliable — use a real device.
-
-## Requirements
-
-- [Flutter SDK](https://docs.flutter.dev/get-started/install) (stable)
-- Android SDK (`minSdk 26`)
-- Physical Android device with BLE
-- Flashed [darkroom-enlarger-head](https://github.com/Draganito/darkroom-enlarger-head) nearby and powered
-
-## Run / build
-
-```bash
-flutter pub get
-flutter run                          # connected device
-flutter build apk --release          # APK under build/app/outputs/
-flutter test
-```
-
-Open this folder in VS Code with the Flutter extension if you prefer the
-IDE buttons — same commands underneath.
 
 ## Project layout
 
 | Path | Role |
 |------|------|
+| `INSTALL.md` | Sideload the release APK (no Flutter SDK) |
 | `lib/main.dart` | App entry |
 | `lib/ble/ble_service.dart` | BLE + JSON protocol (must match firmware `ble_server`) |
 | `lib/ble/ble_constants.dart` | Service / characteristic UUIDs |
@@ -72,6 +65,7 @@ IDE buttons — same commands underneath.
 Verified on real hardware (phones and a tablet). Needs the enlarger-head
 firmware advertising as `DarkroomTimer` over BLE.
 
-## Sibling project
+## Sibling projects
 
 - Head firmware: https://github.com/Draganito/darkroom-enlarger-head
+- SenseCAP controller: https://github.com/Draganito/splitgrade-controller-sensecap
