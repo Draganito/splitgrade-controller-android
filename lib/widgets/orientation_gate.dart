@@ -49,7 +49,7 @@ class OrientationGate extends StatelessWidget {
               ),
               const SizedBox(height: 16),
               const Text(
-                'Bitte Gerät drehen',
+                'Please rotate the device',
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   color: DarkroomColors.red,
@@ -59,7 +59,7 @@ class OrientationGate extends StatelessWidget {
               ),
               const SizedBox(height: 8),
               const Text(
-                'Diese App ist für Querformat ausgelegt.',
+                'This app is designed for landscape.',
                 textAlign: TextAlign.center,
                 style: TextStyle(color: DarkroomColors.dimRed, fontSize: 14),
               ),

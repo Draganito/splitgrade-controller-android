@@ -84,7 +84,7 @@ void main() {
       // The OS ignoring our landscape lock (foldable book mode, split-screen,
       // ...) must not render the fixed 3x2 grid squished into a tall box —
       // see lib/widgets/orientation_gate.dart.
-      expect(find.text('Bitte Gerät drehen'), findsOneWidget);
+      expect(find.text('Please rotate the device'), findsOneWidget);
       expect(find.text('Expose'), findsNothing);
     },
   );

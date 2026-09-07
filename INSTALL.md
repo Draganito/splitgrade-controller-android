@@ -27,7 +27,7 @@ build.
    devices when asked.
 5. Power the enlarger head. Do **not** pair `DarkroomTimer` in Android
    Bluetooth settings — that breaks the app. Open the app, hold
-   **Focus** for 3 seconds → **Einstellungen** → **Geräte suchen** → tap
+   **Focus** for 3 seconds → **Settings** → **Scan for devices** → tap
    **DarkroomTimer**.
 
 ## After connect

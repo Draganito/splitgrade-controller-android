@@ -116,7 +116,7 @@ class BleService extends ChangeNotifier {
       // Most commonly: BLUETOOTH_SCAN permission denied, or adapter is off.
       // Must not leave isScanning stuck true (button would be disabled
       // forever) — always fall through to the reset below.
-      lastError = 'Suche fehlgeschlagen: $e';
+      lastError = 'Scan failed: $e';
     } finally {
       isScanning = false;
       notifyListeners();
@@ -166,7 +166,7 @@ class BleService extends ChangeNotifier {
         timeout: const Duration(seconds: 12),
       );
     } on Exception catch (e) {
-      lastError = 'Verbindung fehlgeschlagen: $e';
+      lastError = 'Connection failed: $e';
       notifyListeners();
       return;
     }
@@ -304,7 +304,7 @@ class BleService extends ChangeNotifier {
 
   Future<void> _writeCmd(Map<String, dynamic> payload) async {
     if (_cmdChar == null) {
-      lastError = 'Befehl nicht gesendet: keine BLE-Verbindung';
+      lastError = 'Command not sent: no BLE connection';
       notifyListeners();
       return;
     }
@@ -314,7 +314,7 @@ class BleService extends ChangeNotifier {
         withoutResponse: false,
       );
     } catch (e) {
-      lastError = 'Befehl nicht gesendet: $e';
+      lastError = 'Command not sent: $e';
       notifyListeners();
     }
   }
@@ -332,7 +332,7 @@ class BleService extends ChangeNotifier {
   /// settings-menu keystroke (firmware persists to flash on every call).
   Future<void> saveConfig(DeviceConfig newConfig) async {
     if (_configChar == null) {
-      lastError = 'Konfiguration nicht gespeichert: keine BLE-Verbindung';
+      lastError = 'Config not saved: no BLE connection';
       notifyListeners();
       return;
     }
@@ -342,7 +342,7 @@ class BleService extends ChangeNotifier {
         withoutResponse: false,
       );
     } catch (e) {
-      lastError = 'Konfiguration nicht gespeichert: $e';
+      lastError = 'Config not saved: $e';
       notifyListeners();
       return;
     }

@@ -71,7 +71,7 @@ class _SettingsSheetState extends State<SettingsSheet> {
         backgroundColor: DarkroomColors.background,
         foregroundColor: DarkroomColors.red,
         elevation: 0,
-        title: const Text('Einstellungen'),
+        title: const Text('Settings'),
       ),
       body: SafeArea(
         // Same cutout/gesture-inset guard as home_screen.dart — the AppBar
@@ -88,8 +88,8 @@ class _SettingsSheetState extends State<SettingsSheet> {
                 children: [
                   Text(
                     ble.isConnected
-                        ? 'Verbunden: ${ble.connectedDeviceName}'
-                        : 'Nicht verbunden',
+                        ? 'Connected: ${ble.connectedDeviceName}'
+                        : 'Not connected',
                     style: const TextStyle(color: DarkroomColors.red),
                   ),
                   const SizedBox(height: 8),
@@ -101,7 +101,7 @@ class _SettingsSheetState extends State<SettingsSheet> {
                               ? null
                               : () => ble.startScan(),
                           child: Text(
-                            ble.isScanning ? 'Suche...' : 'Geräte suchen',
+                            ble.isScanning ? 'Scanning...' : 'Scan for devices',
                           ),
                         ),
                       ),
@@ -109,7 +109,7 @@ class _SettingsSheetState extends State<SettingsSheet> {
                         const SizedBox(width: 8),
                         OutlinedButton(
                           onPressed: () => ble.disconnect(),
-                          child: const Text('Trennen'),
+                          child: const Text('Disconnect'),
                         ),
                       ],
                     ],
@@ -126,14 +126,14 @@ class _SettingsSheetState extends State<SettingsSheet> {
                     children: [
                       Expanded(
                         child: _configField(
-                          label: 'LED-Anzahl',
+                          label: 'LED count',
                           controller: _ledCountCtrl,
                         ),
                       ),
                       const SizedBox(width: 24),
                       Expanded(
                         child: _configField(
-                          label: 'GPIO-Pin (DATA -> Pegelwandler)',
+                          label: 'GPIO pin (DATA -> level shifter)',
                           controller: _gpioCtrl,
                         ),
                       ),
