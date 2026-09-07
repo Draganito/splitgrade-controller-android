@@ -151,7 +151,7 @@ class _SettingsSheetState extends State<SettingsSheet> {
                       ),
                     ),
                   ElevatedButton(
-                    onPressed: ble.isConnected ? _save : null,
+                    onPressed: ble.canSaveConfig ? _save : null,
                     style: ElevatedButton.styleFrom(
                       backgroundColor: DarkroomColors.red,
                       foregroundColor: DarkroomColors.background,

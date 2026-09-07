@@ -16,7 +16,7 @@ build.
 2. Copy the APK to Downloads:
 
    ```bash
-   cp miluka-splitgrade-controller-0.2.2.apk /media/$USER/*/Download/
+   cp miluka-splitgrade-controller-0.2.3.apk /media/$USER/*/Download/
    ```
 
    (or use the Files window that appears when the phone is mounted.)

@@ -81,6 +81,10 @@ class BleService extends ChangeNotifier {
   double remainingSeconds = 0;
   String? lastError;
 
+  /// True only after service discovery found the CONFIG characteristic.
+  /// `isConnected` can flip earlier; Save must wait for this.
+  bool get canSaveConfig => isConnected && _configChar != null;
+
   /// Call once at app startup; tries to silently reconnect to whichever
   /// device was paired last, if any.
   Future<void> tryAutoReconnect() async {
@@ -195,6 +199,9 @@ class BleService extends ChangeNotifier {
       await _discoverAndSubscribe();
     } else if (state == BluetoothConnectionState.disconnected) {
       isConnected = false;
+      _cmdChar = null;
+      _configChar = null;
+      _statusChar = null;
       // No more STATUS notifies coming until reconnected — stop
       // extrapolating a countdown from a now-stale anchor.
       _stopCountdownTicker();
@@ -229,6 +236,9 @@ class BleService extends ChangeNotifier {
     await _statusChar!.setNotifyValue(true);
     _statusSub?.cancel();
     _statusSub = _statusChar!.onValueReceived.listen(_onStatusReceived);
+
+    lastError = null;
+    notifyListeners();
 
     // Pull whatever the device currently has staged, so the UI reflects
     // real hardware state after a (re)connect rather than app defaults.
@@ -346,6 +356,7 @@ class BleService extends ChangeNotifier {
       notifyListeners();
       return;
     }
+    lastError = null;
     config = newConfig;
     notifyListeners();
   }
