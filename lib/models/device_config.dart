@@ -8,9 +8,9 @@ class DeviceConfig {
   const DeviceConfig({required this.ledCount, required this.gpioPin});
 
   // Matches firmware defaults (ConfigStore::kDefaultLedCount / kDefaultGpioPin)
-  // used only until the real value is read back from the device.
+  // for the MILUKA Aristo D2 panel (109× SK6812RGBW, XIAO D4 / GPIO 5).
   factory DeviceConfig.defaults() =>
-      const DeviceConfig(ledCount: 99, gpioPin: 4);
+      const DeviceConfig(ledCount: 109, gpioPin: 5);
 
   DeviceConfig copyWith({int? ledCount, int? gpioPin}) => DeviceConfig(
     ledCount: ledCount ?? this.ledCount,

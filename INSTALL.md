@@ -25,14 +25,15 @@ build.
    asks.
 4. Open **miluka Splitgrade Controller**. Allow Bluetooth / nearby
    devices when asked.
-5. Power the enlarger head. Connect to **DarkroomTimer**.
+5. Power the enlarger head. Do **not** pair `DarkroomTimer` in Android
+   Bluetooth settings — that breaks the app. Open the app, hold
+   **Focus** for 3 seconds → **Einstellungen** → **Geräte suchen** → tap
+   **DarkroomTimer**.
 
 ## After connect
 
-Hold **Focus** for 3 seconds to open **Einstellungen**. Set LED count and
-GPIO to match your panel (see the head
-[FLASH.md](https://github.com/Draganito/darkroom-enlarger-head/blob/main/FLASH.md)
-§4), then **Save**.
+Defaults are already **109 LEDs / GPIO 5** (MILUKA Aristo D2). Change
+them only for a different panel, then **Save**.
 
 ## Build from source (optional)
 
